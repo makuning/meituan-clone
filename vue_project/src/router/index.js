@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
     history: createWebHashHistory(),
-    routers: [{
+    routes: [{
         // 根路径
         path: '/',
         component: ()=>import('../pages/myHome/MyHome')
