@@ -35,7 +35,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="tabs"></div>
+                <van-tabs class="van-tabs">
+                    <van-tab v-for="(item, index) in centent_nav_list" :key="index" :title="item.tab">
+                        <Store :store_list="item.data" />
+                    </van-tab>
+                </van-tabs>
+
             </div>
         </div>
         <Footer />
@@ -45,10 +50,12 @@
 <script>
 import { reactive,toRefs } from "vue";
 import Footer from '../../components/Footer.vue'
+import Store from './components/Store.vue'
 
 export default {
     components: {
         Footer,
+        Store,
     },
     setup() {
         let data = reactive({
@@ -165,6 +172,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// 深度选择器？
+/deep/ .van-tabs__wrap {
+    // 圆角
+    border-radius: 10px;
+}
 .home {
     display: flex;
     flex-flow: column;
@@ -176,6 +188,11 @@ export default {
 
         .main {
             margin-top: -30px;
+            .van-tabs {
+                padding: 0 20px 10px;
+                font-size: 15px;
+                font-weight: 500;
+            }
             .main-bg {
                 background-image: linear-gradient(#fff, #f5f5f5);
                 padding: 10px 20px 0 20px;
